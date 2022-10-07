@@ -4,13 +4,14 @@ var dir_js = path.resolve(__dirname, 'js')
 var dir_css = path.resolve(__dirname, 'css')
 module.exports = {
     //archivo "inicial" por el que se empieza a ver las dependencias
-    entry: [
-            path.resolve(dir_js,'main.js'),
-            'webpack-dev-server/client?http://localhost:8443'
-            ],
+    entry: './js/main.js', 
+    //[
+      //      path.resolve(dir_js,'main.js')
+           // 'webpack-dev-server/client?http://localhost:8443'
+       //     ],
     //bundle construido por webpack, uniendo archivo inicial y dependencias
     output: {
-        path: __dirname,
+        path: path.resolve(__dirname),
         filename: 'bundle.js'
     },
     module: {
@@ -35,10 +36,14 @@ module.exports = {
         ]
     },
     devServer: {
-        https: {
-          key: fs.readFileSync('./security/ca.key'),
-          cert: fs.readFileSync('./security/ca.crt')
-        },
+       //contentBase:path.join(__dirname),
+      // compress:true,
+       //port:3006
+       
+    //    https: {
+   //       key: fs.readFileSync('./security/ca.key'),
+    //     cert: fs.readFileSync('./security/ca.crt')
+    //    },
     },
 
     //para que podamos hacer debug sobre nuestro código original
